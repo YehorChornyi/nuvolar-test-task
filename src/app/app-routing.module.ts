@@ -20,11 +20,11 @@ const ROUTES: Routes = [
                 loadChildren: () => import('./pages/user-details/user-details.module').then((m) => m.UserDetailsModule),
                 data: { state: 'userDetails' },
             },
+            {
+                path: '**',
+                redirectTo: ERoutes.USER_LIST,
+            },
         ],
-    },
-    {
-        path: '**',
-        redirectTo: ERoutes.USER_LIST,
     },
 ];
 
