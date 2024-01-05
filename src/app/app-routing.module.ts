@@ -26,6 +26,10 @@ const ROUTES: Routes = [
             },
         ],
     },
+    {
+        path: '**',
+        redirectTo: ERoutes.USER_LIST,
+    },
 ];
 
 @NgModule({
