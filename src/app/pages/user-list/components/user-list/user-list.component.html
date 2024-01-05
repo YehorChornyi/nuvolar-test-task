@@ -1,0 +1,39 @@
+<section class="user-list">
+    <div class="user-list__header">
+        <h1 class="user-list__header-title">User List</h1>
+
+        <div class="user-list__header-search">
+            <ntt-user-list-search
+                (searchInput)="onSearchUsersByName()"
+                (resetInput)="onResetList()"
+            ></ntt-user-list-search>
+        </div>
+    </div>
+
+    <mat-list
+        class="user-list__content"
+        role="list"
+    >
+        <mat-list-item
+            role="listitem"
+            *ngFor="let user of userList; trackBy: trackById"
+        >
+            <ntt-user-list-item [user]="user"></ntt-user-list-item>
+        </mat-list-item>
+
+        <mat-list-item *ngIf="(listTotalCount$ | async) === 0">No users matching searched name</mat-list-item>
+
+        <mat-list-item *ngIf="currentQuery === ''">Start searching to see the results</mat-list-item>
+
+        <div
+            class="spinner-container"
+            *ngIf="isLoadingList$ | async"
+        >
+            <mat-spinner></mat-spinner>
+        </div>
+    </mat-list>
+
+    <div class="user-list__paginator">
+        <ntt-user-list-paginator (paginatorChange)="onSearchUsersByName()"></ntt-user-list-paginator>
+    </div>
+</section>

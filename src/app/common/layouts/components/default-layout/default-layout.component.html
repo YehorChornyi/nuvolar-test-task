@@ -1,0 +1,14 @@
+<header class="ntt-header">
+    <ntt-header></ntt-header>
+</header>
+
+<main
+    [@routeAnimations]="getState(outlet)"
+    class="ntt-main"
+>
+    <router-outlet #outlet="outlet"></router-outlet>
+</main>
+
+<footer class="ntt-footer">
+    <ntt-footer></ntt-footer>
+</footer>

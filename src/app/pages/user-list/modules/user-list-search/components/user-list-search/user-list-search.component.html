@@ -1,0 +1,27 @@
+<section class="user-list-search">
+    <mat-icon
+        class="user-list-search__info"
+        matTooltip="Please enter more than 2 characters to start searching, no empty spaces allowed"
+        >info</mat-icon
+    >
+
+    <mat-form-field>
+        <mat-label>Search By User Name</mat-label>
+
+        <input
+            matInput
+            type="text"
+            [formControl]="searchByName"
+        />
+
+        <button
+            mat-icon-button
+            matSuffix
+            aria-label="Reset search"
+            matTooltip="Reset search"
+            (click)="resetSearch()"
+        >
+            <mat-icon class="my-icon">close</mat-icon>
+        </button>
+    </mat-form-field>
+</section>

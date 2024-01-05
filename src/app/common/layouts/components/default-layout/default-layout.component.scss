@@ -1,0 +1,42 @@
+@import 'responsive.mixins';
+
+:host {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .ntt-header {
+        min-height: 64px;
+    }
+
+    .ntt-main {
+        height: auto;
+        flex: 1;
+        padding: 32px;
+        max-width: 1444px;
+        margin: 0 auto;
+        width: 100%;
+
+        @media (max-width: 1550px) {
+            max-width: unset;
+            margin: 0;
+            width: unset;
+        }
+    }
+}
+
+@include tablet-portrait {
+    :host {
+        .ntt-main {
+            padding: 16px;
+        }
+
+        .ntt-header {
+            // Changing height to prevent layout shift (Angular Material XSmall breakpoint)
+            @media (max-width: 599px) {
+                min-height: 56px;
+            }
+        }
+    }
+}

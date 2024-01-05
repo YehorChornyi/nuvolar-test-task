@@ -1,0 +1,96 @@
+<mat-card
+    class="user-details"
+    *ngIf="user$ | async as user"
+>
+    <mat-card-header class="user-details__header">
+        <img
+            [src]="user.avatar_url"
+            class="user-details__header-image"
+            alt="User {{ user?.login }} avatar picture"
+        />
+
+        <div class="user-details__header-row">
+            <h1 class="user-details__header-title">{{ user.login }}</h1>
+            <h5
+                class="user-details__header-subtitle"
+                *ngIf="user.bio"
+            >
+                {{ user.bio }}
+            </h5>
+        </div>
+    </mat-card-header>
+
+    <mat-card-content class="user-details__content">
+        <ul class="user-details__list">
+            <li class="user-details__list-item">
+                <span class="name">Followers</span>
+                <span class="value">{{ user.followers ?? '-' }}</span>
+            </li>
+
+            <li class="user-details__list-item">
+                <span class="name">Following</span>
+                <span class="value">{{ user.following ?? '-' }}</span>
+            </li>
+
+            <li class="user-details__list-item">
+                <span class="name">Public repos</span>
+                <span class="value">{{ user.public_repos ?? '-' }}</span>
+            </li>
+
+            <li class="user-details__list-item">
+                <span class="name">Public gists</span>
+                <span class="value">{{ user.public_gists ?? '-' }}</span>
+            </li>
+
+            <li class="user-details__list-item">
+                <span class="name">Created at</span>
+                <span class="value">{{ user.created_at | date : 'M/d/yy' }}</span>
+            </li>
+
+            <li class="user-details__list-item">
+                <span class="name">Updated at</span>
+                <span class="value">{{ user.updated_at | date : 'M/d/yy' }}</span>
+            </li>
+
+            <li class="user-details__list-item">
+                <span class="name">Location</span>
+                <span class="value">{{ user.location ?? '-' }}</span>
+            </li>
+
+            <li class="user-details__list-item">
+                <span class="name">Open to work</span>
+                <span class="value">{{ user.hireable ? 'Yes' : 'No' }}</span>
+            </li>
+
+            <li class="user-details__list-item">
+                <span class="name">Twitter</span>
+                <span class="value">{{ user.twitter_username ?? '-' }}</span>
+            </li>
+
+            <li class="user-details__list-item">
+                <span class="name">Company</span>
+                <span class="value">{{ user.company ?? '-' }}</span>
+            </li>
+        </ul>
+    </mat-card-content>
+
+    <div class="user-details__actions">
+        <a
+            mat-raised-button
+            color="primary"
+            [href]="user.html_url"
+            target="_blank"
+            class="user-details__action"
+        >
+            <span>View in GitHub</span>
+            <mat-icon>open_in_new</mat-icon>
+        </a>
+    </div>
+</mat-card>
+
+<div
+    class="spinner-container"
+    *ngIf="isLoadingUser$ | async"
+>
+    <mat-spinner></mat-spinner>
+</div>

@@ -1,0 +1,147 @@
+@import 'responsive.mixins';
+
+.user-details {
+    padding: 32px;
+    position: relative;
+
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 16px;
+
+        &-image {
+            border-radius: 50%;
+            max-width: 240px;
+        }
+
+        &-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        &-title,
+        &-subtitle {
+            margin: 0;
+        }
+
+        &-subtitle {
+            font-weight: 300;
+        }
+    }
+
+    &__content {
+        margin: 32px 0 0 0;
+    }
+
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 32px;
+
+        &-item {
+            max-width: 300px;
+            width: 100%;
+            flex: 1 1 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+
+            .name {
+                font-size: 28px;
+                line-height: 32px;
+            }
+
+            .value {
+                font-size: 21px;
+                font-weight: 300;
+            }
+        }
+    }
+
+    &__actions {
+        position: absolute;
+        right: 32px;
+        top: 32px;
+
+        a {
+            mat-icon {
+                margin-left: 8px;
+                width: auto;
+                height: auto;
+                font-size: 19px;
+            }
+        }
+    }
+}
+
+@include tablet-portrait {
+    .user-details {
+        padding: 24px;
+
+        &__header {
+            &-image {
+                max-width: 180px;
+            }
+        }
+
+        &__list {
+            &-item {
+                .name {
+                    font-size: 21px;
+                    line-height: 28px;
+                }
+
+                .value {
+                    font-size: 16px;
+                }
+            }
+        }
+
+        &__actions {
+            position: static;
+            width: 100%;
+            right: unset;
+            top: unset;
+            display: flex;
+            justify-content: flex-end;
+            margin: 24px 0 0 0;
+        }
+    }
+}
+
+@include mobile {
+    @include tablet-portrait {
+        .user-details {
+            padding: 16px 0;
+
+            &__header {
+                &-image {
+                    max-width: 140px;
+                }
+            }
+
+            &__list {
+                gap: 0;
+                flex-direction: column;
+                align-items: center;
+
+                &-item {
+                    flex: unset;
+                    max-width: 100%;
+                    padding: 24px 0;
+                    border-top: 1px solid #eee;
+                }
+            }
+
+            &__actions {
+                padding: 0 16px 0 0;
+            }
+        }
+    }
+}

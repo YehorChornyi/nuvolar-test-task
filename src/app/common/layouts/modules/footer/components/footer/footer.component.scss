@@ -1,0 +1,12 @@
+.footer {
+    height: 48px;
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+
+    .footer-wording {
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,29 @@
+@import 'responsive.mixins';
+@import 'colors';
+
+:host {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+
+    .toolbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &-title {
+            text-decoration: none;
+            color: inherit;
+        }
+    }
+
+    @include tablet-portrait {
+        .toolbar {
+            &-title {
+                font-size: 16px;
+            }
+        }
+    }
+}
